@@ -32,13 +32,14 @@ const GPIO_ADDRESSES: [usize; GPIO_COUNT] = [
     GPIO_BASE + 0xD8  //GPIO27
 ];
 
+#[allow(dead_code)]
 enum GpioRegisterAccessType{
     ReadOnly,
     WriteOnly,
     ReadWrite
 }
 
-
+#[allow(dead_code)]
 /// The total list of all functions for all programmable Gpio pins.
 enum GpioFunction{
     Spi0Sio0,
@@ -268,6 +269,7 @@ enum GpioFunction{
 /// This is an implementation of the Gpio Function Select Table as shown in section 3.1.1 of the RP1 peripherals document.
 /// A None in this table indicates that either that function has not been implemented by this BSP, OR that the function select
 /// value is reserved by the board manufacturer
+#[allow(dead_code)]
 const GPIO_FUNCTION_TABLE: [[Option<GpioFunction>; 9]; GPIO_COUNT] = [
     // Is a large table like this tedious and unwieldy? Totally...But it matches the documentation (making it easy to validate)
     // and it allows for me to create a relatively easy-to-use interface that forces a loud and obvious error if some invalid
@@ -305,6 +307,7 @@ const GPIO_FUNCTION_TABLE: [[Option<GpioFunction>; 9]; GPIO_COUNT] = [
 ];                       
 
 
+#[allow(dead_code)]
 
 struct GpioRegisterDefinition{
     offset: usize,
@@ -312,11 +315,13 @@ struct GpioRegisterDefinition{
     access_type: GpioRegisterAccessType
 }
 
+#[allow(dead_code)]
 pub struct GpioRegReadResult{
     pub value: usize,
     pub bit_width: usize
 }
 
+#[allow(dead_code)]
 /// Contains the properties of a GpioStatus register
 const GPIO_STATUS: GpioRegisterDefinition = GpioRegisterDefinition{
     offset: 0x00,
@@ -325,13 +330,14 @@ const GPIO_STATUS: GpioRegisterDefinition = GpioRegisterDefinition{
 };
 
 /// Contains the properties of a GpioControl register
+#[allow(dead_code)]
 const GPIO_CTRL: GpioRegisterDefinition = GpioRegisterDefinition{
     offset: 0x04,
     bit_width: 32,
     access_type: GpioRegisterAccessType::ReadWrite
 };
 
-
+#[allow(dead_code)]
 fn get_gpio_address(gpio_index: usize) -> Result<usize, &'static str>{
     if gpio_index >= GPIO_ADDRESSES.len()
     {
@@ -341,7 +347,7 @@ fn get_gpio_address(gpio_index: usize) -> Result<usize, &'static str>{
     Ok(GPIO_ADDRESSES[gpio_index])
 }
 
-
+#[allow(dead_code)]
 impl GpioRegisterDefinition{
     pub fn write(&self, gpio_index: usize, value: usize, bits: usize) -> Result<usize, &'static str>{
 
@@ -441,6 +447,7 @@ impl GpioRegisterDefinition{
     }
 }
 
+#[allow(dead_code)]
 struct GpioCtrlConfigBuilder{
 
 }

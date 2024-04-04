@@ -11,12 +11,14 @@ const UART_ADDRESSES: [usize; 6] = [
     0x1F00044000  // UART5
 ];
 
+#[allow(dead_code)]
 enum UartRegisterAccessType{
     ReadOnly,
     WriteOnly,
     ReadWrite
 }
 
+#[allow(dead_code)]
 /// The definition of a UART register as found in the PL011 technical reference manual.
 struct UartRegisterDefinition{
     /// The offset from the UART base address at which this UART register can be found.
@@ -36,6 +38,7 @@ struct UartRegisterDefinition{
 //Define the various UART registers.
 
 /// Data Register
+#[allow(dead_code)]
 const UARTDR: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x000,
     bit_width: 12,
@@ -43,6 +46,7 @@ const UARTDR: UartRegisterDefinition = UartRegisterDefinition{
     access_type: UartRegisterAccessType::ReadWrite
 };
 
+#[allow(dead_code)]
 /// Receive Status Register, coincides with the Error Clear Register (UARTECR) at offset 0x004
 const UARTRSR: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x004,
@@ -51,6 +55,7 @@ const UARTRSR: UartRegisterDefinition = UartRegisterDefinition{
     access_type: UartRegisterAccessType::ReadOnly
 };
 
+#[allow(dead_code)]
 /// Error Clear Register, coincides with the Receive Status Register (UARTRSR) at offset 0x004
 const UARTECR: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x004, 
@@ -59,6 +64,7 @@ const UARTECR: UartRegisterDefinition = UartRegisterDefinition{
     access_type: UartRegisterAccessType::WriteOnly
 };
 
+#[allow(dead_code)]
 /// Flag Register
 const UARTFR: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x018,
@@ -68,6 +74,7 @@ const UARTFR: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// IrDA Low-Power Counter Register
+#[allow(dead_code)]
 const UARTILPR: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x20,
     bit_width: 8,
@@ -76,6 +83,7 @@ const UARTILPR: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// Integer Baud Rate Register
+#[allow(dead_code)]
 const UARTIBRD: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x24,
     bit_width: 16,
@@ -84,6 +92,7 @@ const UARTIBRD: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// Fractional Baud Rate Register
+#[allow(dead_code)]
 const UARTFBRD: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x28,
     bit_width: 6,
@@ -92,6 +101,7 @@ const UARTFBRD: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// Line Control Register
+#[allow(dead_code)]
 const UARTLCR_H: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x02C,
     bit_width: 8,
@@ -100,6 +110,7 @@ const UARTLCR_H: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// UART Control Register
+#[allow(dead_code)]
 const UARTCR: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x30,
     bit_width: 16,
@@ -108,6 +119,7 @@ const UARTCR: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// Interrupt FIFO Level Select Register
+#[allow(dead_code)]
 const UARTIFLS: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x34,
     bit_width: 6,
@@ -116,6 +128,7 @@ const UARTIFLS: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// Interrupt Mask Set/Clear Register
+#[allow(dead_code)]
 const UARTIMSC: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x38,
     bit_width: 11,
@@ -124,6 +137,7 @@ const UARTIMSC: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// Raw Interrupt Status Register
+#[allow(dead_code)]
 const UARTRIS: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x03C,
     bit_width: 11,
@@ -132,6 +146,7 @@ const UARTRIS: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// Masked Interrupt Status Register
+#[allow(dead_code)]
 const UARTMIS: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x040,
     bit_width: 11,
@@ -140,6 +155,7 @@ const UARTMIS: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// Interrupt Clear Register
+#[allow(dead_code)]
 const UARTICR: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x040,
     bit_width: 11,
@@ -148,6 +164,7 @@ const UARTICR: UartRegisterDefinition = UartRegisterDefinition{
 };
 
 /// DMA Control Register
+#[allow(dead_code)]
 const UARTDMACR: UartRegisterDefinition = UartRegisterDefinition{
     offset: 0x48,
     bit_width: 3,
@@ -155,6 +172,7 @@ const UARTDMACR: UartRegisterDefinition = UartRegisterDefinition{
     access_type: UartRegisterAccessType::ReadWrite
 };
 
+#[allow(dead_code)]
 pub struct UartRegReadResult{
     pub value: usize,
     pub bit_width: usize
@@ -269,6 +287,7 @@ impl UartRegisterDefinition{
     }
 }
 
+#[allow(dead_code)]
 pub enum WordLength{
     Bits8,
     Bits7,
@@ -276,38 +295,44 @@ pub enum WordLength{
     Bits5
 }
 
+#[allow(dead_code)]
 pub enum ParitySelect{
     Even,
     Odd
 }
 
+#[allow(dead_code)]
 pub enum StickParityEnableMode{
     Disabled,
     Enabled
 }
 
+#[allow(dead_code)]
 pub enum FIFOEnableMode{
     Enabled,
     Disabled
 }
 
+#[allow(dead_code)]
 pub enum ParityEnableMode{
     Disabled,
     Enabled(ParitySelect)
 }
 
-
+#[allow(dead_code)]
 pub enum StopBitMode{
     OneStopBit,
     TwoStopBits
 }
 
+#[allow(dead_code)]
 pub enum TransmitMode{
     TxOnly,
     RxOnly,
     Bidirectional
 }
 
+#[allow(dead_code)]
 pub struct UartInstance{
     uart_index: usize
 }
@@ -342,6 +367,7 @@ impl InstanceBuilder{
         }
     }
 
+    #[allow(dead_code)]
     pub fn with_fifo(self) -> InstanceBuilder{
         InstanceBuilder{
             fifo_enable_mode: FIFOEnableMode::Enabled,
@@ -349,6 +375,7 @@ impl InstanceBuilder{
         }
     }
 
+    #[allow(dead_code)]
     pub fn with_parity(self, parity_mode: ParitySelect) -> InstanceBuilder{
         InstanceBuilder{
             parity_enable_mode: ParityEnableMode::Enabled(parity_mode),
@@ -356,6 +383,7 @@ impl InstanceBuilder{
         }
     }
 
+    #[allow(dead_code)]
     pub fn with_stick_parity(self) -> InstanceBuilder{
         InstanceBuilder{
             stick_parity_enable_mode: StickParityEnableMode::Enabled,
@@ -363,6 +391,7 @@ impl InstanceBuilder{
         }
     }
 
+    #[allow(dead_code)]
     pub fn with_stop_bit_mode(self, stop_bit_mode: StopBitMode) -> InstanceBuilder{
         InstanceBuilder{
             stop_bit_mode,
@@ -370,6 +399,7 @@ impl InstanceBuilder{
         }
     }
 
+    #[allow(dead_code)]
     pub fn with_baud_rate(self, baud_rate: usize) -> InstanceBuilder{
         InstanceBuilder{
             baud_rate,
@@ -377,6 +407,7 @@ impl InstanceBuilder{
         }
     }
 
+    #[allow(dead_code)]
     pub fn with_transmit_mode(self, transmit_mode: TransmitMode) -> InstanceBuilder{
         InstanceBuilder{
             transmit_mode,
@@ -384,12 +415,14 @@ impl InstanceBuilder{
         }
     }
 
+    #[allow(dead_code)]
     pub fn build(self) -> Result<UartInstance, &'static str> {
 
         UartInstance::new(self)
     }
     
 
+    #[allow(dead_code)]
     fn default() -> InstanceBuilder{
         InstanceBuilder{
             uart_index: UART_ADDRESSES.len() + 1, //By default, set it to the first invalid index. This prevents the default value from being useful, and forces a uart to be selected
@@ -404,6 +437,7 @@ impl InstanceBuilder{
     }
 }
 
+#[allow(dead_code)]
 pub struct Flags{
     /// Clear to Send
     cts: bool,
@@ -456,34 +490,42 @@ impl Flags{
 
     }
 
+    #[allow(dead_code)]
     pub fn clear_to_send(&self) -> bool{
         self.cts
     }
 
+    #[allow(dead_code)]
     pub fn data_set_ready(&self) -> bool{
         self.dsr
     }
 
+    #[allow(dead_code)]
     pub fn data_carrier_detect(&self) -> bool{
         self.dcd
     }
 
+    #[allow(dead_code)]
     pub fn transmit_busy(&self) -> bool{
         self.busy
     }
 
+    #[allow(dead_code)]
     pub fn receive_fifo_empty(&self) -> bool{
         self.rxfe
     }
 
+    #[allow(dead_code)]
     pub fn transmit_fifo_empty(&self) -> bool{
         self.txfe
     }
 
+    #[allow(dead_code)]
     pub fn receive_fifo_full(&self) -> bool{
         self.rxff
     }
 
+    #[allow(dead_code)]
     pub fn transmit_fifo_full(&self) -> bool{
         self.txff
     }
