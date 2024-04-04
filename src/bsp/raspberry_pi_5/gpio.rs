@@ -308,7 +308,6 @@ const GPIO_FUNCTION_TABLE: [[Option<GpioFunction>; 9]; GPIO_COUNT] = [
 
 
 #[allow(dead_code)]
-
 struct GpioRegisterDefinition{
     offset: usize,
     bit_width: usize,
